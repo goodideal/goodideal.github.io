@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://blog.wjz.im/blog/2018-09/%E6%9B%B4%E6%94%B9git%E4%BD%9C%E8%80%85%E5%90%8D%E7%A7%B0%E5%92%8C%E9%82%AE%E7%AE%B1%E4%BB%A5%E5%8F%8A%E5%8E%86%E5%8F%B2%E6%8F%90%E4%BA%A4/</loc>
+    <lastmod>2018-09-27T23:03:12+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.wjz.im/blog/</loc>
     <lastmod>2018-09-13T22:31:21+08:00</lastmod>
   </url>
@@ -113,6 +118,18 @@
   </url>
   
   <url>
+    <loc>https://blog.wjz.im/tags/git/</loc>
+    <lastmod>2018-09-27T23:03:12+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.wjz.im/series/how-to/</loc>
+    <lastmod>2018-09-27T23:03:12+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.wjz.im/tags/hugo/</loc>
     <lastmod>2018-03-20T16:46:17+08:00</lastmod>
     <priority>0</priority>
@@ -173,6 +190,12 @@
   </url>
   
   <url>
+    <loc>https://blog.wjz.im/tags/snippets/</loc>
+    <lastmod>2018-09-27T23:03:12+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.wjz.im/tags/</loc>
     <lastmod>2018-08-18T20:14:59+08:00</lastmod>
     <priority>0</priority>
@@ -192,7 +215,7 @@
   
   <url>
     <loc>https://blog.wjz.im/</loc>
-    <lastmod>2018-08-18T20:14:59+08:00</lastmod>
+    <lastmod>2018-09-27T23:03:12+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -253,6 +276,12 @@
   <url>
     <loc>https://blog.wjz.im/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>2018-08-05T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.wjz.im/categories/%E7%BB%8F%E9%AA%8C/</loc>
+    <lastmod>2018-09-27T23:03:12+08:00</lastmod>
     <priority>0</priority>
   </url>
   

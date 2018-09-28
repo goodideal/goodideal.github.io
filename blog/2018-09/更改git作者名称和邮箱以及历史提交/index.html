@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="zn-Hans">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
+  <meta name="author" content="WJZhu">
+  <meta name="description" content="修改所有历史commits的name和email 使用以下脚本即可实现，不过需要修改以下几个参数： OLD_EMAIL: 需要修改的旧邮箱地址 CORRECT_NAME: 需要修改成哪个名字 CORRECT_EMAIL: 需要修改成哪个邮箱 git filter-branch -f --env-filter &#39; OLD_EMAIL=&quot;old-email@example.com&quot; CORRECT_NAME=&quot;example&quot; CORRECT_EMAIL=&quot;new-email@example.com&quot; if [ &quot;$GIT_COMMITTER_EMAIL&quot; = &quot;$OLD_EMAIL&quot; ] then export GIT_COMMITTER_NAME=&quot;$CORRECT_NAME&quot; export GIT_COMMITTER_EMAIL=&quot;$CORRECT_EMAIL&quot; fi if [ &quot;$GIT_AUTHOR_EMAIL&quot; = &quot;$OLD_EMAIL&quot; ] then export GIT_AUTHOR_NAME=&quot;$CORRECT_NAME&quot; export GIT_AUTHOR_EMAIL=&quot;$CORRECT_EMAIL&quot; fi &#39; --tag-name-filter cat -- --branches --tags 修改完成后，再执行： git push --force --tags origin &#39;refs/heads/*&#39; 大功告成！ 全局修改git的name和email $ git config --global user.name &quot;Jerry&quot; $ git config --global user.email &quot;jerry@wjz.im&quot; 在git repo层面修改git的name和email $ git config user.name &quot;Jerry&quot; $">
+  
+  <meta property="og:title" content="更改git作者名称和邮箱以及历史提交" />
+<meta property="og:description" content="修改所有历史commits的name和email 使用以下脚本即可实现，不过需要修改以下几个参数： OLD_EMAIL: 需要修改的旧邮箱地址 CORRECT_NAME: 需要修改成哪个名字 CORRECT_EMAIL: 需要修改成哪个邮箱 git filter-branch -f --env-filter &#39; OLD_EMAIL=&quot;old-email@example.com&quot; CORRECT_NAME=&quot;example&quot; CORRECT_EMAIL=&quot;new-email@example.com&quot; if [ &quot;$GIT_COMMITTER_EMAIL&quot; = &quot;$OLD_EMAIL&quot; ] then export GIT_COMMITTER_NAME=&quot;$CORRECT_NAME&quot; export GIT_COMMITTER_EMAIL=&quot;$CORRECT_EMAIL&quot; fi if [ &quot;$GIT_AUTHOR_EMAIL&quot; = &quot;$OLD_EMAIL&quot; ] then export GIT_AUTHOR_NAME=&quot;$CORRECT_NAME&quot; export GIT_AUTHOR_EMAIL=&quot;$CORRECT_EMAIL&quot; fi &#39; --tag-name-filter cat -- --branches --tags 修改完成后，再执行： git push --force --tags origin &#39;refs/heads/*&#39; 大功告成！ 全局修改git的name和email $ git config --global user.name &quot;Jerry&quot; $ git config --global user.email &quot;jerry@wjz.im&quot; 在git repo层面修改git的name和email $ git config user.name &quot;Jerry&quot; $" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.wjz.im/blog/2018-09/%E6%9B%B4%E6%94%B9git%E4%BD%9C%E8%80%85%E5%90%8D%E7%A7%B0%E5%92%8C%E9%82%AE%E7%AE%B1%E4%BB%A5%E5%8F%8A%E5%8E%86%E5%8F%B2%E6%8F%90%E4%BA%A4/" /><meta property="article:published_time" content="2018-09-27T23:03:12&#43;08:00"/>
+<meta property="article:modified_time" content="2018-09-27T23:03:12&#43;08:00"/>
+
+
+  <title>
+  
+       更改git作者名称和邮箱以及历史提交 | WJZhu&#39;s Trash Bin 
+  
+  </title>
+
+  <link rel="canonical" href="https://blog.wjz.im/blog/2018-09/%E6%9B%B4%E6%94%B9git%E4%BD%9C%E8%80%85%E5%90%8D%E7%A7%B0%E5%92%8C%E9%82%AE%E7%AE%B1%E4%BB%A5%E5%8F%8A%E5%8E%86%E5%8F%B2%E6%8F%90%E4%BA%A4/">
+
+  
+  
+
+  
+  <link href="https://blog.wjz.im/css/vendors-extensions/fontawesome/all.min.css" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:300,400,500,600">
+  <link href="https://blog.wjz.im/css/font.css" rel="stylesheet"> 
+    
+  
+  <link href="https://blog.wjz.im/css/vendors/bootstrap4/bootstrap.min.css" rel="stylesheet">
+  <link href="https://blog.wjz.im/css/vendors-extensions/mdb/mdb.min.css" rel="stylesheet"> 
+  <link href="https://blog.wjz.im/css/vendors/mdb/style.min.css" rel="stylesheet"> 
+  <link href="https://blog.wjz.im/css/main.css" rel="stylesheet">
+
+
+  
+  <link rel="shortcut icon"
+  
+      href="https://blog.wjz.im/img/zheng.png"
+  
+  >
+
+
+  
+  
+
+  <style type="text/css">
+      @media (min-width: 800px) and (max-width: 850px) {
+              .navbar:not(.top-nav-collapse) {
+                  background: #1C2331!important;
+              }
+          }
+  </style>
+
+
+  
+    
+    <link rel="stylesheet" href="https://blog.wjz.im/js/vendors/katex/katex.min.css">
+  
+  
+
+  
+    
+    <link rel="stylesheet" href="https://blog.wjz.im/css/vendors/highlight/github-gist.css">
+  
+
+</head>
+
+  <body class="bg-light" data-spy="scroll" data-target="#page-scrollspy" data-offset="90">
+  
+    
+    
+
+    
+      
+
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+    <div class="container">
+
+      
+      <a class="navbar-brand" href="https://blog.wjz.im">
+          
+        <img class="avatar" src="https://blog.wjz.im/img/zheng.png" style="width: 40px!important;height: auto;"  class="d-inline-block align-top" alt="" >
+        
+        <strong> WJZhu</strong>
+      </a>
+
+      
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        
+        <ul class="navbar-nav mr-auto ">
+          <li class="nav-item ">
+            <a class="nav-link" href="https://blog.wjz.im">Home</a>
+          </li>
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://blog.wjz.im/blog/" >Blog  </a>
+            </li>
+          
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://blog.wjz.im/moment/" >Moment  </a>
+            </li>
+          
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://blog.wjz.im/about/" >About  </a>
+            </li>
+          
+          
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+  
+ 
+      
+ 
+
+
+
+
+
+
+<div id="site-header" class="carousel slide carousel-fade" data-ride="carousel" style="height: 18rem;" >  
+
+  
+  
+  
+
+  
+  <div class="carousel-inner" role="listbox">
+    
+      
+
+        
+        <div class="carousel-item active">
+          <div class="view" style="background-image: url('https://blog.wjz.im/img/header-slides/raw_1515691746.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+              
+              
+              
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://blog.wjz.im/img/header-slides//raw_1515847341.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+
+  
+  </div>
+  
+
+  
+  <div class="carousel-content text-center white-text wow fadeIn">
+    <div class="row mx-0 headfont mt-3 pt-4">
+      
+      <div class="col-12 col-sm-5 align-middle">
+        <a href="https://blog.wjz.im">
+          
+            <img class="pull-right avatar avatar-md" src="https://blog.wjz.im/img/profile.jpg" alt="" >
+          
+        </a>
+      </div>
+      
+      <div class="col-12 col-sm-7 text-left pl-2">
+        <a href="https://blog.wjz.im">
+          <h1 class="mb-2 h1" style="font-weight: 300;" >
+            <strong>WJZhu&#39;s Trash Bin</strong>
+          </h1>
+        </a>
+        
+
+             
+        <div class="mt-2" style="font-size: 1rem; color: white;">
+            
+              <a href="//github.com/goodideal" target="_blank" rel="noopener"><i class="fab fa-github pr-1" aria-hidden="true"></i></a>    
+            
+            
+              <a href="//www.linkedin.com/in/wenjiez/" target="_blank" rel="noopener"><i class="fab fa-linkedin pr-1" aria-hidden="true"></i></a>
+            
+
+            
+              <a href="//facebook.com/jerry2v" target="_blank" rel="noopener"><i class="fab fa-facebook pr-1" aria-hidden="true"></i></a>
+            
+
+            
+            <a href="//google.com/101855814749765952089" target="_blank" rel="noopener"><i class="fab fa-google-plus pr-1" aria-hidden="true"></i></a>
+            
+
+            
+                <a href="//twitter.com/jerry2v" target="_blank" rel="noopener"><i class="fab fa-twitter pr-1" aria-hidden="true"></i></a>
+            
+
+            
+                <a href="//instagram.com/jerry2v" target="_blank" rel="noopener"><i class="fab fa-instagram pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+    
+        
+            
+                <a href="mailto:jerry@wjz.im"><i class="far fa-envelope-open pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+
+            
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  
+  
+  
+
+</div>
+  
+    
+
+    
+  
+  <main class="post-main-wrapper">
+    
+    
+    <div class="row">
+
+      
+
+      
+      <div class="col-md-10">
+      
+
+        
+        <div class="z-depth-1  post-wrapper white-bg single-post">
+
+          <div class="post-header text-center" >
+  <ul class="post-meta li-x">
+    
+      
+        <li><a href="https://blog.wjz.im/categories/%E7%BB%8F%E9%AA%8C"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> 经验 </a></li>
+      
+    
+    
+      
+        <li><a href="https://blog.wjz.im/series/how-to"><i class="fas fa-bookmark pr-1" aria-hidden="true"></i>How-To</a></li>
+      
+    
+  </ul>
+
+  <div class="px-4 post-heading">更改git作者名称和邮箱以及历史提交</div>
+
+  <ul class="post-meta li-x mt-1">
+    
+      <li>Sep 27, 2018</li>
+    
+
+    
+      <li class="middot"></li>
+      <li>One minute read</li>
+    
+  </ul>
+  
+    <div class="view">
+      <img src="https://blog.wjz.im/images/blog/2018-09/git.png" />
+    </div>
+  
+
+</div>
+
+
+          <div class="post-content markdown">
+            
+
+<h2 id="修改所有历史commits的name和email">修改所有历史commits的name和email</h2>
+
+<p>使用以下脚本即可实现，不过需要修改以下几个参数：</p>
+
+<ul>
+<li><code>OLD_EMAIL</code>: 需要修改的旧邮箱地址</li>
+<li><code>CORRECT_NAME</code>: 需要修改成哪个名字</li>
+<li><code>CORRECT_EMAIL</code>: 需要修改成哪个邮箱</li>
+</ul>
+
+<pre><code class="language-bash">git filter-branch -f --env-filter '
+
+OLD_EMAIL=&quot;old-email@example.com&quot;
+CORRECT_NAME=&quot;example&quot;
+CORRECT_EMAIL=&quot;new-email@example.com&quot;
+
+if [ &quot;$GIT_COMMITTER_EMAIL&quot; = &quot;$OLD_EMAIL&quot; ]
+then
+    export GIT_COMMITTER_NAME=&quot;$CORRECT_NAME&quot;
+    export GIT_COMMITTER_EMAIL=&quot;$CORRECT_EMAIL&quot;
+fi
+if [ &quot;$GIT_AUTHOR_EMAIL&quot; = &quot;$OLD_EMAIL&quot; ]
+then
+    export GIT_AUTHOR_NAME=&quot;$CORRECT_NAME&quot;
+    export GIT_AUTHOR_EMAIL=&quot;$CORRECT_EMAIL&quot;
+fi
+' --tag-name-filter cat -- --branches --tags
+
+</code></pre>
+
+<p>修改完成后，再执行：</p>
+
+<pre><code class="language-bash">git push --force --tags origin 'refs/heads/*'
+</code></pre>
+
+<p>大功告成！</p>
+
+<h2 id="全局修改git的name和email">全局修改git的name和email</h2>
+
+<pre><code class="language-bash">
+$ git config --global user.name &quot;Jerry&quot;
+$ git config --global user.email &quot;jerry@wjz.im&quot;
+
+</code></pre>
+
+<h2 id="在git-repo层面修改git的name和email">在git repo层面修改git的name和email</h2>
+
+<pre><code class="language-bash">$ git config user.name &quot;Jerry&quot;
+$ git config user.email &quot;jerry@wjz.im&quot;
+</code></pre>
+
+<h2 id="仅在某次提交试用特定的name和email">仅在某次提交试用特定的name和email</h2>
+
+<pre><code class="language-bash">git commit --author=&quot;Jerry &lt;jerry@wjz.im&gt;&quot;
+</code></pre>
+
+<h2 id="版本控制">版本控制</h2>
+
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Action</th>
+<th>Time</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1.0</td>
+<td>Init</td>
+<td>2018-09-28</td>
+</tr>
+</tbody>
+</table>
+
+          </div>
+
+          
+          <div class="row">
+            <div class="col-md-8">
+            
+              <div class="mb-5">
+                
+<div class="li-x div-x post-meta">
+  <li class="pr-0"><a href="https://blog.wjz.im/tags/"><i class="fas fa-tags"></i></a></li>
+  <div class="tags-sm">
+    
+      <li><a href="https://blog.wjz.im/tags/git" role="button">git </a></li>
+      
+    
+      <li><a href="https://blog.wjz.im/tags/snippets" role="button">snippets </a></li>
+      
+    
+  </div>
+</div>
+              </div>
+            
+            </div>
+            
+          </div>
+          
+
+          
+          <div class="row pt-3">
+            <div class="col-md-6">
+              
+                <a href=https://blog.wjz.im/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B014-%E8%AE%A9%E5%90%8C%E9%A1%B5%E6%BB%9A%E5%8A%A8%E6%9B%B4%E5%B9%B3%E6%BB%91/ class="post-meta">Previous
+                  <div class="pt-2 pb-5 d-flex">
+                    <i class="fas fa-angle-left text-grey font-weight-bold mr-2 active-color"></i>
+                    <span>Blog养成记(14) 让同页滚动更平滑</span>
+                  </div>
+                </a>
+              
+            </div>
+            
+            <div class="col-md-6 text-right" >
+              
+            </div>
+          </div>
+
+          
+
+        </div>
+        
+
+      </div>
+      
+
+      
+	
+	
+	
+	
+		
+		
+		
+	
+
+		
+		<div class="col-md-2 pl-0">
+
+			
+			<div id="page-scrollspy" class="toc-nav">
+				
+				<ul class="nav nav-pills ml-0">
+					
+					<li class="nav-item pb-3 text-center">
+						<span class="font-weight-bold mb-2">- CATALOG - </span>
+					</li>
+
+					
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e4%bf%ae%e6%94%b9%e6%89%80%e6%9c%89%e5%8e%86%e5%8f%b2commits%e7%9a%84name%e5%92%8cemail">
+												 修改所有历史commits的name和email
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e5%85%a8%e5%b1%80%e4%bf%ae%e6%94%b9git%e7%9a%84name%e5%92%8cemail">
+												 全局修改git的name和email
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e5%9c%a8git-repo%e5%b1%82%e9%9d%a2%e4%bf%ae%e6%94%b9git%e7%9a%84name%e5%92%8cemail">
+												 在git repo层面修改git的name和email
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e4%bb%85%e5%9c%a8%e6%9f%90%e6%ac%a1%e6%8f%90%e4%ba%a4%e8%af%95%e7%94%a8%e7%89%b9%e5%ae%9a%e7%9a%84name%e5%92%8cemail">
+												 仅在某次提交试用特定的name和email
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e7%89%88%e6%9c%ac%e6%8e%a7%e5%88%b6">
+												 版本控制
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+
+				</ul>
+			</div>
+			
+
+		</div>
+		
+	
+
+    </div>
+    
+
+
+  </main>
+  
+
+
+    
+    
+
+<footer class="page-footer text-center font-small mt-4 wow fadeIn">
+
+
+  
+  <div class="pb-2 mt-5 pt-5">
+    
+      <a href="//github.com/goodideal " target="_blank" rel="noopener"><i class="fab fa-github mr-3" aria-hidden="true"></i></a>    
+    
+    
+      <a href="//www.linkedin.com/in/wenjiez/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in mr-3" aria-hidden="true"></i></a>
+    
+
+    
+      <a href="//facebook.com/jerry2v" target="_blank" rel="noopener"><i class="fab fa-facebook-f mr-3" aria-hidden="true"></i></a>
+    
+
+    
+    <a href="//google.com/101855814749765952089" target="_blank" rel="noopener"><i class="fab fa-google-plus-g mr-3" aria-hidden="true"></i></a>
+    
+
+    
+        <a href="//twitter.com/jerry2v" target="_blank" rel="noopener"><i class="fab fa-twitter mr-3" aria-hidden="true"></i></a>
+    
+
+    
+        <a href="//instagram.com/jerry2v" target="_blank" rel="noopener"><i class="fab fa-instagram mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+
+    
+        <a href="mailto:jerry@wjz.im"><i class="far fa-envelope-open mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+  </div>
+  
+
+  
+  <div class="copyright py-4">
+    
+    <span>  2016 - 2018 &copy; | Theme <a href='https://github.com/orianna-zzo/AllinOne' target="_blank">AllinOne</a> by <a href='https://github.com/orianna-zzo' target="_blank">Orianna</a>  </span>
+  </div>
+  
+
+</footer>
+
+
+    
+
+
+
+
+
+
+<script type="text/javascript" src="https://blog.wjz.im/js/vendors/jquery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://blog.wjz.im/js/vendors/jquery/jquery.smooth-scroll.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://blog.wjz.im/js/vendors/popper.min.js"></script>
+<script type="text/javascript" src="https://blog.wjz.im/js/vendors/holder.min.js"></script>
+<script type="text/javascript" src="https://blog.wjz.im/js/vendors-extensions/bootstrap4/bootstrap.js" ></script>
+
+<script type="text/javascript" src="https://blog.wjz.im/js/vendors/mdb/mdb.min.js"></script>
+
+<script type="text/javascript" src="https://blog.wjz.im/js/main.js"></script>
+
+
+
+  
+  <script src="https://blog.wjz.im/js/vendors/highlight.pack.js"> </script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+ 
+  <script src="https://blog.wjz.im/js/vendors/katex/katex.min.js"> </script>
+  <script src="https://blog.wjz.im/js/vendors/katex/contrib/auto-render.min.js"></script>
+
+  <script>
+      document.addEventListener("DOMContentLoaded", function () {
+          renderMathInElement(document.body);
+      });
+  </script>
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  
+  new WOW().init();
+</script>
+
+
+
+
+  </body>
+</html>
