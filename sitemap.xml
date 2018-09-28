@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://blog.wjz.im/blog/2018-09/git_stats%E7%BB%9F%E8%AE%A1%E5%B7%A5%E5%85%B7%E7%BB%9F%E8%AE%A1%E5%B0%8F%E4%BC%99%E4%BC%B4%E4%BB%AC%E7%9A%84git%E4%BB%A3%E7%A0%81%E6%8F%90%E4%BA%A4/</loc>
+    <lastmod>2018-09-28T11:41:42+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.wjz.im/blog/2018-09/%E6%9B%B4%E6%94%B9git%E4%BD%9C%E8%80%85%E5%90%8D%E7%A7%B0%E5%92%8C%E9%82%AE%E7%AE%B1%E4%BB%A5%E5%8F%8A%E5%8E%86%E5%8F%B2%E6%8F%90%E4%BA%A4/</loc>
     <lastmod>2018-09-27T23:03:12+08:00</lastmod>
   </url>
@@ -119,13 +124,13 @@
   
   <url>
     <loc>https://blog.wjz.im/tags/git/</loc>
-    <lastmod>2018-09-27T23:03:12+08:00</lastmod>
+    <lastmod>2018-09-28T11:41:42+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.wjz.im/series/how-to/</loc>
-    <lastmod>2018-09-27T23:03:12+08:00</lastmod>
+    <lastmod>2018-09-28T11:41:42+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -191,7 +196,7 @@
   
   <url>
     <loc>https://blog.wjz.im/tags/snippets/</loc>
-    <lastmod>2018-09-27T23:03:12+08:00</lastmod>
+    <lastmod>2018-09-28T11:41:42+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -215,7 +220,7 @@
   
   <url>
     <loc>https://blog.wjz.im/</loc>
-    <lastmod>2018-09-27T23:03:12+08:00</lastmod>
+    <lastmod>2018-09-28T11:41:42+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -281,7 +286,7 @@
   
   <url>
     <loc>https://blog.wjz.im/categories/%E7%BB%8F%E9%AA%8C/</loc>
-    <lastmod>2018-09-27T23:03:12+08:00</lastmod>
+    <lastmod>2018-09-28T11:41:42+08:00</lastmod>
     <priority>0</priority>
   </url>
   

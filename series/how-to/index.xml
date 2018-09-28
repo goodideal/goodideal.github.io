@@ -6,10 +6,19 @@
     <description>Recent content in How To on WJZhu&#39;s Trash Bin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zn-Hans</language>
-    <lastBuildDate>Thu, 27 Sep 2018 23:03:12 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 28 Sep 2018 11:41:42 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.wjz.im/series/how-to/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>git_stats统计工具：统计小伙伴们的git代码提交</title>
+      <link>https://blog.wjz.im/blog/2018-09/git_stats%E7%BB%9F%E8%AE%A1%E5%B7%A5%E5%85%B7%E7%BB%9F%E8%AE%A1%E5%B0%8F%E4%BC%99%E4%BC%B4%E4%BB%AC%E7%9A%84git%E4%BB%A3%E7%A0%81%E6%8F%90%E4%BA%A4/</link>
+      <pubDate>Fri, 28 Sep 2018 11:41:42 +0800</pubDate>
+      
+      <guid>https://blog.wjz.im/blog/2018-09/git_stats%E7%BB%9F%E8%AE%A1%E5%B7%A5%E5%85%B7%E7%BB%9F%E8%AE%A1%E5%B0%8F%E4%BC%99%E4%BC%B4%E4%BB%AC%E7%9A%84git%E4%BB%A3%E7%A0%81%E6%8F%90%E4%BA%A4/</guid>
+      <description>工具选型 git统计工具可选并不多，找了许久，在找到以下几个： GitStats, git history statistics generator: http://gitstats.sourceforge.net/, https://github.com/dmitryn/GitStats git_stats, a git repository statistics generator: https://github.com/tomgi/git_stats git-stats, Local git statistics including GitHub-like contributions calendars: https://github.com/IonicaBizau/git-stats gitinspector, The statistical analysis tool for git repositories: https://github.com/ejwa/gitinspector 经过一番比较，最终选择了git_stats，主要有以下几个好处： 相对较新，输出样式最讨人喜爱； 功能齐全，可与gitstats一拼； 为方便与CI集成，打成docker镜像 goodideal/docker-git-stats:latest，维护地址为：https://github</description>
+    </item>
     
     <item>
       <title>更改git作者名称和邮箱以及历史提交</title>
