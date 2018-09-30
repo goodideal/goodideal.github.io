@@ -7,22 +7,23 @@
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
   <meta name="author" content="WJZhu">
-  <meta name="description" content="[Be myself. Stay Hungry. Stay Foolish. Gods determine what you&#39;re going to be.]">
+  <meta name="description" content="修改所有历史commits的name和email 使用以下脚本即可实现，不过需要修改以下几个参数： OLD_EMAIL: 需要修改的旧邮箱地址 CORRECT_NAME: 需要修改成哪个名字 CORRECT_EMAIL: 需要修改成哪个邮箱 git filter-branch -f --env-filter &#39; OLD_EMAIL=&quot;old-email@example.com&quot; CORRECT_NAME=&quot;example&quot; CORRECT_EMAIL=&quot;new-email@example.com&quot; if [ &quot;$GIT_COMMITTER_EMAIL&quot; = &quot;$OLD_EMAIL&quot; ] then export GIT_COMMITTER_NAME=&quot;$CORRECT_NAME&quot; export GIT_COMMITTER_EMAIL=&quot;$CORRECT_EMAIL&quot; fi if [ &quot;$GIT_AUTHOR_EMAIL&quot; = &quot;$OLD_EMAIL&quot; ] then export GIT_AUTHOR_NAME=&quot;$CORRECT_NAME&quot; export GIT_AUTHOR_EMAIL=&quot;$CORRECT_EMAIL&quot; fi &#39; --tag-name-filter cat -- --branches --tags 修改完成后，再执行： git push --force --tags origin &#39;refs/heads/*&#39; 大功告成！ 全局修改git的name和email $ git config --global user.name &quot;Jerry&quot; $ git config --global user.email &quot;jerry@wjz.im&quot; 在git repo层面修改git的name和email $ git config user.name &quot;Jerry&quot; $">
   
-  <meta property="og:title" content="Code | 代码" />
-<meta property="og:description" content="[Be myself. Stay Hungry. Stay Foolish. Gods determine what you&#39;re going to be.]" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://blog.wjz.im/code/" />
-<meta property="og:updated_time" content="2018-09-13T22:31:21&#43;08:00"/>
+  <meta property="og:title" content="更改git作者名称和邮箱以及历史提交" />
+<meta property="og:description" content="修改所有历史commits的name和email 使用以下脚本即可实现，不过需要修改以下几个参数： OLD_EMAIL: 需要修改的旧邮箱地址 CORRECT_NAME: 需要修改成哪个名字 CORRECT_EMAIL: 需要修改成哪个邮箱 git filter-branch -f --env-filter &#39; OLD_EMAIL=&quot;old-email@example.com&quot; CORRECT_NAME=&quot;example&quot; CORRECT_EMAIL=&quot;new-email@example.com&quot; if [ &quot;$GIT_COMMITTER_EMAIL&quot; = &quot;$OLD_EMAIL&quot; ] then export GIT_COMMITTER_NAME=&quot;$CORRECT_NAME&quot; export GIT_COMMITTER_EMAIL=&quot;$CORRECT_EMAIL&quot; fi if [ &quot;$GIT_AUTHOR_EMAIL&quot; = &quot;$OLD_EMAIL&quot; ] then export GIT_AUTHOR_NAME=&quot;$CORRECT_NAME&quot; export GIT_AUTHOR_EMAIL=&quot;$CORRECT_EMAIL&quot; fi &#39; --tag-name-filter cat -- --branches --tags 修改完成后，再执行： git push --force --tags origin &#39;refs/heads/*&#39; 大功告成！ 全局修改git的name和email $ git config --global user.name &quot;Jerry&quot; $ git config --global user.email &quot;jerry@wjz.im&quot; 在git repo层面修改git的name和email $ git config user.name &quot;Jerry&quot; $" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.wjz.im/code/2018-09/change-git-author-in-commits/" /><meta property="article:published_time" content="2018-09-27T23:03:12&#43;08:00"/>
+<meta property="article:modified_time" content="2018-09-27T23:03:12&#43;08:00"/>
+
 
 
   <title>
   
-       Code | 代码 | WJZhu&#39;s Trash Bin 
+       更改git作者名称和邮箱以及历史提交 | WJZhu&#39;s Trash Bin 
   
   </title>
 
-  <link rel="canonical" href="https://blog.wjz.im/code/">
+  <link rel="canonical" href="https://blog.wjz.im/code/2018-09/change-git-author-in-commits/">
 
   
   
@@ -50,8 +51,6 @@
 
 
   
-  
-  <link href="https://blog.wjz.im/code/index.xml" rel="alternate" type="application/rss+xml" title="WJZhu&#39;s Trash Bin" />
   
 
   <style type="text/css">
@@ -254,8 +253,6 @@
             
     
             
-                <a href="https://blog.wjz.im/code/index.xml"><i class="fas fa-rss pr-1" aria-hidden="true"></i></a>
-            
 
             
         </div>
@@ -273,303 +270,337 @@
     
 
     
-  <main class="post-main-wrapper px-5">
+  
+  <main class="post-main-wrapper">
+    
     
     <div class="row">
 
       
+
       
+      <div class="col-md-10">
+      
+
         
-        <div class="col-md-3">
-          
+        <div class="z-depth-1  post-wrapper white-bg single-post">
 
-  
-
-  
-
-
-
-
-
-  <hr>
-  
-    <div class="post-meta">
-      <div class="mb-2">
-        <a href="https://blog.wjz.im/categories/">
-          <span class="font-weight-bold text-uppercase post-meta">
-            <i class="fas fa-folder-open pr-1" aria-hidden="true"></i> 
-            Categories
-          </span>
-        </a>
-      </div>
-
-      <div class="li-x post-meta" style="margin-left: -8px;">
-        
-          
-          
-            
-            <li class="py-1">
-              <a href="https://blog.wjz.im/categories/%E7%BB%8F%E9%AA%8C">
-                <span>经验 (2)</span>
-              </a>
-            </li>           
-          
-        
-      </div>
-    </div>
-
-    
-  
-
-    
-          
-
-  
-
-  
-
-
-
-
-
-  <hr>
-  
-    <div class="post-meta">
-      <div class="mb-2">
-        <a href="https://blog.wjz.im/tags/">
-          <span class="font-weight-bold text-uppercase post-meta">
-            <i class="fas fa-tags pr-1" aria-hidden="true"></i> 
-            Featured Tags
-          </span>
-        </a>
-      </div>
-
-      <div class="li-x post-meta tags-md" style="margin-left: -8px;">
-        
-        
-        
-            <li><a href="https://blog.wjz.im/tags/git" role="button"><span>git (2)</span></a></li>
-          
-        
-            <li><a href="https://blog.wjz.im/tags/snippets" role="button"><span>snippets (2)</span></a></li>
-          
-        
-      </div>
-    </div>
-
-    
-  
-
-          
-  
-
-  
-
-
-
-
-
-
-
-  <hr>
-  
-    <div class="post-meta">
-      <div class="mb-2">
-        <a href="https://blog.wjz.im/series/">
-          <span class="font-weight-bold text-uppercase post-meta">
-            <i class="fas fa-bookmark pr-1" aria-hidden="true"></i> 
-            Recommend Series
-          </span>
-        </a>
-      </div>
-     
-      <div class="post-meta" >
-        
-          
-          
-            <li class="py-1"><a href="https://blog.wjz.im/series/how-to"><span>How-To (2)</span></a></li>
-          
-        
-      </div>
+          <div class="post-header text-center" >
+  <ul class="post-meta li-x">
     
       
+        <li><a href="https://blog.wjz.im/categories/%E7%BB%8F%E9%AA%8C"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> 经验 </a></li>
+      
+    
+    
+      
+        <li><a href="https://blog.wjz.im/series/how-to"><i class="fas fa-bookmark pr-1" aria-hidden="true"></i>How-To</a></li>
+      
+    
+  </ul>
+
+  <div class="px-4 post-heading">更改git作者名称和邮箱以及历史提交</div>
+
+  <ul class="post-meta li-x mt-1">
+    
+      <li>Sep 27, 2018</li>
+    
+
+    
+      <li class="middot"></li>
+      <li>One minute read</li>
+    
+  </ul>
+  
+    <div class="view">
+      <img src="https://blog.wjz.im/images/blog/2018-09/git.png" />
     </div>
   
 
-  
-        </div>
-        
-
-        
-        
-        <div class="col-md-9 mt-3">  
-      
-          <ul>
-            <div class="div-x">
-              <div class='post-heading'>
-  
-      Code | 代码
-  
 </div>
 
-              
-              
-                <div class="px-2 middot"></div>
-                <div>
-                  2 posts
-                </div>
-              
-            </div>
 
-              
-        </ul>
-        <div>
-          <div class="pagination pagination-outline justify-content-end active-color">
+          <div class="post-content markdown">
             
-            
+
+<h2 id="修改所有历史commits的name和email">修改所有历史commits的name和email</h2>
+
+<p>使用以下脚本即可实现，不过需要修改以下几个参数：</p>
+
+<ul>
+<li><code>OLD_EMAIL</code>: 需要修改的旧邮箱地址</li>
+<li><code>CORRECT_NAME</code>: 需要修改成哪个名字</li>
+<li><code>CORRECT_EMAIL</code>: 需要修改成哪个邮箱</li>
+</ul>
+
+<pre><code class="language-bash">git filter-branch -f --env-filter '
+
+OLD_EMAIL=&quot;old-email@example.com&quot;
+CORRECT_NAME=&quot;example&quot;
+CORRECT_EMAIL=&quot;new-email@example.com&quot;
+
+if [ &quot;$GIT_COMMITTER_EMAIL&quot; = &quot;$OLD_EMAIL&quot; ]
+then
+    export GIT_COMMITTER_NAME=&quot;$CORRECT_NAME&quot;
+    export GIT_COMMITTER_EMAIL=&quot;$CORRECT_EMAIL&quot;
+fi
+if [ &quot;$GIT_AUTHOR_EMAIL&quot; = &quot;$OLD_EMAIL&quot; ]
+then
+    export GIT_AUTHOR_NAME=&quot;$CORRECT_NAME&quot;
+    export GIT_AUTHOR_EMAIL=&quot;$CORRECT_EMAIL&quot;
+fi
+' --tag-name-filter cat -- --branches --tags
+
+</code></pre>
+
+<p>修改完成后，再执行：</p>
+
+<pre><code class="language-bash">git push --force --tags origin 'refs/heads/*'
+</code></pre>
+
+<p>大功告成！</p>
+
+<h2 id="全局修改git的name和email">全局修改git的name和email</h2>
+
+<pre><code class="language-bash">
+$ git config --global user.name &quot;Jerry&quot;
+$ git config --global user.email &quot;jerry@wjz.im&quot;
+
+</code></pre>
+
+<h2 id="在git-repo层面修改git的name和email">在git repo层面修改git的name和email</h2>
+
+<pre><code class="language-bash">$ git config user.name &quot;Jerry&quot;
+$ git config user.email &quot;jerry@wjz.im&quot;
+</code></pre>
+
+<h2 id="仅在某次提交试用特定的name和email">仅在某次提交试用特定的name和email</h2>
+
+<pre><code class="language-bash">git commit --author=&quot;Jerry &lt;jerry@wjz.im&gt;&quot;
+</code></pre>
+
+<h2 id="版本控制">版本控制</h2>
+
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Action</th>
+<th>Time</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1.0</td>
+<td>Init</td>
+<td>2018-09-28</td>
+</tr>
+</tbody>
+</table>
 
           </div>
 
           
-              <div class="post-wrapper white-bg post-card">
-  
-  <a href="https://blog.wjz.im/code/2018-09/git-stats/">
-    <div class="post-header text-center">
-      <div class="px-4 post-heading">git_stats统计工具：统计小伙伴们的git代码提交</div>
-      <ul class="post-meta li-x mt-1">
-        
-          <li>Sep 28, 2018</li>
-        
-    
-        
-          <li class="middot"></li>
-          <li>One minute read</li>
-        
-      </ul>
-    </div>
-    
-    
-      <div class="view">
-        <img src="https://blog.wjz.im/images/blog/2018-09/git.png" />
-      </div>
-    
-
-    
-      工具选型 git统计工具可选并不多，找了许久，在找到以下几个： GitStats, git history statistics generator: http://gitstats.sourceforge.net/, https://github.com/dmitryn/GitStats git_stats, a git repository statistics generator: https://github.com/tomgi/git_stats git-stats, Local git statistics including GitHub-like contributions calendars: https://github.com/IonicaBizau/git-stats gitinspector, The statistical analysis tool for git repositories: https://github.com/ejwa/gitinspector 经过一番比较，最终选择了git_stats，主要有以下几个好处： 相对较新，输出样式最讨人喜爱； 功能齐全，可与gitstats一拼； 为方便与CI集成，打成docker镜像 goodideal/docker-git-stats:latest，维护地址为：https://github......
-    
-  </a>
-
-  
-  
-  <div class="post-meta li-x mt-2 div-x">
-    <div>
-      
-        
-          <li><a href="https://blog.wjz.im/categories/%E7%BB%8F%E9%AA%8C"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> 经验 </a></li>
-        
-      
-      
-        
-          <li><a href="https://blog.wjz.im/series/how-to"><i class="fas fa-bookmark pr-1" aria-hidden="true"></i>How-To</a></li>
-        
-      
-    </div>
-   
-    <div>
-      
-        
-<div class="li-x div-x post-meta">
-  <li class="pr-0"><a href="https://blog.wjz.im/tags/"><i class="fas fa-tags"></i></a></li>
-  <div class="tags-sm">
-    
-      <li><a href="https://blog.wjz.im/tags/git" role="button">git </a></li>
-      
-    
-      <li><a href="https://blog.wjz.im/tags/snippets" role="button">snippets </a></li>
-      
-    
-  </div>
-</div>
-      
-    </div>
-  </div>
-
-</div>
-
-          
-              <div class="post-wrapper white-bg post-card">
-  
-  <a href="https://blog.wjz.im/code/2018-09/change-git-author-in-commits/">
-    <div class="post-header text-center">
-      <div class="px-4 post-heading">更改git作者名称和邮箱以及历史提交</div>
-      <ul class="post-meta li-x mt-1">
-        
-          <li>Sep 27, 2018</li>
-        
-    
-        
-          <li class="middot"></li>
-          <li>One minute read</li>
-        
-      </ul>
-    </div>
-    
-    
-      <div class="view">
-        <img src="https://blog.wjz.im/images/blog/2018-09/git.png" />
-      </div>
-    
-
-    
-      修改所有历史commits的name和email 使用以下脚本即可实现，不过需要修改以下几个参数： OLD_EMAIL: 需要修改的旧邮箱地址 CORRECT_NAME: 需要修改成哪个名字 CORRECT_EMAIL: 需要修改成哪个邮箱 git filter-branch -f --env-filter &#39; OLD_EMAIL=&#34;old-email@example.com&#34; CORRECT_NAME=&#34;example&#34; CORRECT_EMAIL=&#34;new-email@example.com&#34; if [ &#34;$GIT_COMMITTER_EMAIL&#34; = &#34;$OLD_EMAIL&#34; ] then export GIT_COMMITTER_NAME=&#34;$CORRECT_NAME&#34; export GIT_COMMITTER_EMAIL=&#34;$CORRECT_EMAIL&#34; fi if [ &#34;$GIT_AUTHOR_EMAIL&#34; = &#34;$OLD_EMAIL&#34; ] then export GIT_AUTHOR_NAME=&#34;$CORRECT_NAME&#34; export GIT_AUTHOR_EMAIL=&#34;$CORRECT_EMAIL&#34; fi &#39; --tag-name-filter cat -- --branches --tags 修改完成后，再执行： git push --force --tags origin &#39;refs/heads/*&#39; 大功告成！ 全局修改git的name和email $ git config --global user.name &#34;Jerry&#34; $ git config --global user.email &#34;jerry@wjz.im&#34; 在git repo层面修改git的name和email $ git config user.name &#34;Jerry&#34; $......
-    
-  </a>
-
-  
-  
-  <div class="post-meta li-x mt-2 div-x">
-    <div>
-      
-        
-          <li><a href="https://blog.wjz.im/categories/%E7%BB%8F%E9%AA%8C"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> 经验 </a></li>
-        
-      
-      
-        
-          <li><a href="https://blog.wjz.im/series/how-to"><i class="fas fa-bookmark pr-1" aria-hidden="true"></i>How-To</a></li>
-        
-      
-    </div>
-   
-    <div>
-      
-        
-<div class="li-x div-x post-meta">
-  <li class="pr-0"><a href="https://blog.wjz.im/tags/"><i class="fas fa-tags"></i></a></li>
-  <div class="tags-sm">
-    
-      <li><a href="https://blog.wjz.im/tags/git" role="button">git </a></li>
-      
-    
-      <li><a href="https://blog.wjz.im/tags/snippets" role="button">snippets </a></li>
-      
-    
-  </div>
-</div>
-      
-    </div>
-  </div>
-
-</div>
-
-          
+          <div class="row">
+            <div class="col-md-8">
             
+              <div class="mb-5">
+                
+<div class="li-x div-x post-meta">
+  <li class="pr-0"><a href="https://blog.wjz.im/tags/"><i class="fas fa-tags"></i></a></li>
+  <div class="tags-sm">
+    
+      <li><a href="https://blog.wjz.im/tags/git" role="button">git </a></li>
+      
+    
+      <li><a href="https://blog.wjz.im/tags/snippets" role="button">snippets </a></li>
+      
+    
+  </div>
+</div>
+              </div>
+            
+            </div>
+            
+          </div>
+          
+
+          
+          <div class="row pt-3">
+            <div class="col-md-6">
+              
+            </div>
+            
+            <div class="col-md-6 text-right" >
+              
+                <a href=https://blog.wjz.im/code/2018-09/git-stats/ class="post-meta">Next
+                  <div class="pt-2 pb-5 flex-reverse">
+                    <i class="fas fa-angle-right text-grey font-weight-bold ml-2 active-color"></i>
+                    <span>git_stats统计工具：统计小伙伴们的git代码提交</span>
+                  </div>
+                </a>
+              
+            </div>
+          </div>
+
+          
+
         </div>
+        
+
       </div>
       
 
+      
+	
+	
+	
+	
+		
+		
+		
+	
+
+		
+		<div class="col-md-2 pl-0">
+
+			
+			<div id="page-scrollspy" class="toc-nav">
+				
+				<ul class="nav nav-pills ml-0">
+					
+					<li class="nav-item pb-3 text-center">
+						<span class="font-weight-bold mb-2">- CATALOG - </span>
+					</li>
+
+					
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e4%bf%ae%e6%94%b9%e6%89%80%e6%9c%89%e5%8e%86%e5%8f%b2commits%e7%9a%84name%e5%92%8cemail">
+												 修改所有历史commits的name和email
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e5%85%a8%e5%b1%80%e4%bf%ae%e6%94%b9git%e7%9a%84name%e5%92%8cemail">
+												 全局修改git的name和email
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e5%9c%a8git-repo%e5%b1%82%e9%9d%a2%e4%bf%ae%e6%94%b9git%e7%9a%84name%e5%92%8cemail">
+												 在git repo层面修改git的name和email
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e4%bb%85%e5%9c%a8%e6%9f%90%e6%ac%a1%e6%8f%90%e4%ba%a4%e8%af%95%e7%94%a8%e7%89%b9%e5%ae%9a%e7%9a%84name%e5%92%8cemail">
+												 仅在某次提交试用特定的name和email
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e7%89%88%e6%9c%ac%e6%8e%a7%e5%88%b6">
+												 版本控制
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+
+				</ul>
+			</div>
+			
+
+		</div>
+		
+	
+
     </div>
+    
+
+
   </main>
+  
+
 
     
     
@@ -609,8 +640,6 @@
         <a href="mailto:jerry@wjz.im"><i class="far fa-envelope-open mr-3" aria-hidden="true"></i></a>
     
 
-    
-        <a href="https://blog.wjz.im/code/index.xml"><i class="fas fa-rss mr-3" aria-hidden="true"></i></a>
     
 
     

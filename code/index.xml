@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>WJZhu&#39;s Trash Bin</title>
-    <link>https://blog.wjz.im/</link>
-    <description>Recent content on WJZhu&#39;s Trash Bin</description>
+    <title>Code | 代码 on WJZhu&#39;s Trash Bin</title>
+    <link>https://blog.wjz.im/code/</link>
+    <description>Recent content in Code | 代码 on WJZhu&#39;s Trash Bin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zn-Hans</language>
-    <lastBuildDate>Fri, 28 Sep 2018 11:41:42 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 13 Sep 2018 22:31:21 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.wjz.im/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.wjz.im/code/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
