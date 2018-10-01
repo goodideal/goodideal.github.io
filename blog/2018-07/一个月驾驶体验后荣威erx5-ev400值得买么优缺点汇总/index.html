@@ -7,23 +7,23 @@
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
   <meta name="author" content="WJZhu">
-  <meta name="description" content="修改所有历史commits的name和email 使用以下脚本即可实现，不过需要修改以下几个参数： OLD_EMAIL: 需要修改的旧邮箱地址 CORRECT_NAME: 需要修改成哪个名字 CORRECT_EMAIL: 需要修改成哪个邮箱 git filter-branch -f --env-filter &#39; OLD_EMAIL=&quot;old-email@example.com&quot; CORRECT_NAME=&quot;example&quot; CORRECT_EMAIL=&quot;new-email@example.com&quot; if [ &quot;$GIT_COMMITTER_EMAIL&quot; = &quot;$OLD_EMAIL&quot; ] then export GIT_COMMITTER_NAME=&quot;$CORRECT_NAME&quot; export GIT_COMMITTER_EMAIL=&quot;$CORRECT_EMAIL&quot; fi if [ &quot;$GIT_AUTHOR_EMAIL&quot; = &quot;$OLD_EMAIL&quot; ] then export GIT_AUTHOR_NAME=&quot;$CORRECT_NAME&quot; export GIT_AUTHOR_EMAIL=&quot;$CORRECT_EMAIL&quot; fi &#39; --tag-name-filter cat -- --branches --tags 修改完成后，再执行： git push --force --tags origin &#39;refs/heads/*&#39; 大功告成！ 全局修改git的name和email $ git config --global user.name &quot;Jerry&quot; $ git config --global user.email &quot;jerry@wjz.im&quot; 在git repo层面修改git的name和email $ git config user.name &quot;Jerry&quot; $">
+  <meta name="description" content="总体感觉 ERX5提车1个多月，主要用于上下班通勤和偶尔几次短程长途（往返200km以内）。总体上还算 满意，但细节处理上问题颇多，产品打磨和测试明显不足，而且称为互联网汽车，除实时地图和手机钥匙外，这匹“斑马”还是太瘦了点。 瑕不掩瑜，对于售价20多w的SUV，性价比还是不错的，电车后续的维护成本也比油车低多了，省了一系列油车保养项目，每年换换空调格和滤芯就好了。 废话少说，下面来细数ERX5的优缺">
   
-  <meta property="og:title" content="更改git作者名称和邮箱以及历史提交" />
-<meta property="og:description" content="修改所有历史commits的name和email 使用以下脚本即可实现，不过需要修改以下几个参数： OLD_EMAIL: 需要修改的旧邮箱地址 CORRECT_NAME: 需要修改成哪个名字 CORRECT_EMAIL: 需要修改成哪个邮箱 git filter-branch -f --env-filter &#39; OLD_EMAIL=&quot;old-email@example.com&quot; CORRECT_NAME=&quot;example&quot; CORRECT_EMAIL=&quot;new-email@example.com&quot; if [ &quot;$GIT_COMMITTER_EMAIL&quot; = &quot;$OLD_EMAIL&quot; ] then export GIT_COMMITTER_NAME=&quot;$CORRECT_NAME&quot; export GIT_COMMITTER_EMAIL=&quot;$CORRECT_EMAIL&quot; fi if [ &quot;$GIT_AUTHOR_EMAIL&quot; = &quot;$OLD_EMAIL&quot; ] then export GIT_AUTHOR_NAME=&quot;$CORRECT_NAME&quot; export GIT_AUTHOR_EMAIL=&quot;$CORRECT_EMAIL&quot; fi &#39; --tag-name-filter cat -- --branches --tags 修改完成后，再执行： git push --force --tags origin &#39;refs/heads/*&#39; 大功告成！ 全局修改git的name和email $ git config --global user.name &quot;Jerry&quot; $ git config --global user.email &quot;jerry@wjz.im&quot; 在git repo层面修改git的name和email $ git config user.name &quot;Jerry&quot; $" />
+  <meta property="og:title" content="一个月驾驶体验后，荣威ERX5 EV400值得买么？【优缺点汇总】" />
+<meta property="og:description" content="总体感觉 ERX5提车1个多月，主要用于上下班通勤和偶尔几次短程长途（往返200km以内）。总体上还算 满意，但细节处理上问题颇多，产品打磨和测试明显不足，而且称为互联网汽车，除实时地图和手机钥匙外，这匹“斑马”还是太瘦了点。 瑕不掩瑜，对于售价20多w的SUV，性价比还是不错的，电车后续的维护成本也比油车低多了，省了一系列油车保养项目，每年换换空调格和滤芯就好了。 废话少说，下面来细数ERX5的优缺" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.wjz.im/code/2018-09/change-git-author-in-commits/" /><meta property="article:published_time" content="2018-09-27T23:03:12&#43;08:00"/>
-<meta property="article:modified_time" content="2018-09-27T23:03:12&#43;08:00"/>
+<meta property="og:url" content="https://blog.wjz.im/blog/2018-07/%E4%B8%80%E4%B8%AA%E6%9C%88%E9%A9%BE%E9%A9%B6%E4%BD%93%E9%AA%8C%E5%90%8E%E8%8D%A3%E5%A8%81erx5-ev400%E5%80%BC%E5%BE%97%E4%B9%B0%E4%B9%88%E4%BC%98%E7%BC%BA%E7%82%B9%E6%B1%87%E6%80%BB/" /><meta property="article:published_time" content="2018-07-03T23:03:12&#43;08:00"/>
+<meta property="article:modified_time" content="2018-07-03T23:03:12&#43;08:00"/>
 
 
 
   <title>
   
-       更改git作者名称和邮箱以及历史提交 | WJZhu&#39;s Trash Bin 
+       一个月驾驶体验后，荣威ERX5 EV400值得买么？【优缺点汇总】 | WJZhu&#39;s Trash Bin 
   
   </title>
 
-  <link rel="canonical" href="https://blog.wjz.im/code/2018-09/change-git-author-in-commits/">
+  <link rel="canonical" href="https://blog.wjz.im/blog/2018-07/%E4%B8%80%E4%B8%AA%E6%9C%88%E9%A9%BE%E9%A9%B6%E4%BD%93%E9%AA%8C%E5%90%8E%E8%8D%A3%E5%A8%81erx5-ev400%E5%80%BC%E5%BE%97%E4%B9%B0%E4%B9%88%E4%BC%98%E7%BC%BA%E7%82%B9%E6%B1%87%E6%80%BB/">
 
   
   
@@ -289,31 +289,31 @@
   <ul class="post-meta li-x">
     
       
-        <li><a href="https://blog.wjz.im/categories/%E7%BB%8F%E9%AA%8C"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> 经验 </a></li>
+        <li><a href="https://blog.wjz.im/categories/blog"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> Blog </a></li>
       
     
     
       
-        <li><a href="https://blog.wjz.im/series/how-to"><i class="fas fa-bookmark pr-1" aria-hidden="true"></i>How-To</a></li>
+        <li><a href="https://blog.wjz.im/series/%E8%BD%A6"><i class="fas fa-bookmark pr-1" aria-hidden="true"></i>车</a></li>
       
     
   </ul>
 
-  <div class="px-4 post-heading">更改git作者名称和邮箱以及历史提交</div>
+  <div class="px-4 post-heading">一个月驾驶体验后，荣威ERX5 EV400值得买么？【优缺点汇总】</div>
 
   <ul class="post-meta li-x mt-1">
     
-      <li>Sep 27, 2018</li>
+      <li>Jul 3, 2018</li>
     
 
     
       <li class="middot"></li>
-      <li>One minute read</li>
+      <li>4 minutes read</li>
     
   </ul>
   
     <div class="view">
-      <img src="https://blog.wjz.im/images/blog/2018-09/git.png" />
+      <img src="https://blog.wjz.im/images/blog/2018-07/ERX5.jpg" />
     </div>
   
 
@@ -323,81 +323,75 @@
           <div class="post-content markdown">
             
 
-<h2 id="修改所有历史commits的name和email">修改所有历史commits的name和email</h2>
+<h2 id="总体感觉">总体感觉</h2>
 
-<p>使用以下脚本即可实现，不过需要修改以下几个参数：</p>
+<p>ERX5提车1个多月，主要用于<code>上下班通勤</code>和<code>偶尔几次短程长途</code>（往返200km以内）。总体上还算 <strong>满意</strong>，但细节处理上问题颇多，产品打磨和测试明显不足，而且称为互联网汽车，除<code>实时地图</code>和<code>手机钥匙</code>外，这匹“斑马”还是<code>太瘦</code>了点。</p>
 
-<ul>
-<li><code>OLD_EMAIL</code>: 需要修改的旧邮箱地址</li>
-<li><code>CORRECT_NAME</code>: 需要修改成哪个名字</li>
-<li><code>CORRECT_EMAIL</code>: 需要修改成哪个邮箱</li>
-</ul>
+<p>瑕不掩瑜，对于售价20多w的SUV，性价比还是不错的，电车后续的维护成本也比油车低多了，省了一系列油车保养项目，每年换换空调格和滤芯就好了。</p>
 
-<pre><code class="language-bash">git filter-branch -f --env-filter '
+<p>废话少说，下面来细数ERX5的<code>优缺点</code>。</p>
 
-OLD_EMAIL=&quot;old-email@example.com&quot;
-CORRECT_NAME=&quot;example&quot;
-CORRECT_EMAIL=&quot;new-email@example.com&quot;
+<h2 id="erx5优点">ERX5优点</h2>
 
-if [ &quot;$GIT_COMMITTER_EMAIL&quot; = &quot;$OLD_EMAIL&quot; ]
-then
-    export GIT_COMMITTER_NAME=&quot;$CORRECT_NAME&quot;
-    export GIT_COMMITTER_EMAIL=&quot;$CORRECT_EMAIL&quot;
-fi
-if [ &quot;$GIT_AUTHOR_EMAIL&quot; = &quot;$OLD_EMAIL&quot; ]
-then
-    export GIT_AUTHOR_NAME=&quot;$CORRECT_NAME&quot;
-    export GIT_AUTHOR_EMAIL=&quot;$CORRECT_EMAIL&quot;
-fi
-' --tag-name-filter cat -- --branches --tags
+<ol>
+<li><p>续航基本够用，至于网评续航达不到320，是真的…但能开多远，主要看驾驶习惯、环境、使用方式等。跑了几次短程长途，80+km加上一点堵车，全程空调24度，室外温度30度，高速上大部分时间跑到100，跑前续航显示290，到终点剩205左右。</p></li>
 
-</code></pre>
+<li><p>驾驶平顺，电车的优势，没有换挡的顿挫感，平路上行驶飞快，80km以下超车容易，80km以上超车要保持长一点的距离。普通模式大多数场景够用，想要推背感用运动模式，不过电掉的也会快些。</p></li>
 
-<p>修改完成后，再执行：</p>
+<li><p>后座可以向后调节，坐的很舒服，也可以往前放倒，增加储物空间，蛮实用的。</p></li>
 
-<pre><code class="language-bash">git push --force --tags origin 'refs/heads/*'
-</code></pre>
+<li><p>翻毛皮，比光面皮舒服，也挺耐脏，家里有狗狗，出去玩了几次，拿抹布擦擦就干净了。</p></li>
 
-<p>大功告成！</p>
+<li><p>导航加实时路况，非常方便，很多时候懒得开手机看地图路况，现在看其他车都习惯看中台了。</p></li>
 
-<h2 id="全局修改git的name和email">全局修改git的name和email</h2>
+<li><p>方向盘可以上下前后调节，虽然大部分车都支持。</p></li>
 
-<pre><code class="language-bash">
-$ git config --global user.name &quot;Jerry&quot;
-$ git config --global user.email &quot;jerry@wjz.im&quot;
+<li><p>前车碰撞检测，变线检测功能不错，尤其是前者，但警示声音不够突出，但只有检测，没有自动刹车的功能。</p></li>
 
-</code></pre>
+<li><p>语音控制还不错，大部分指令可以准确识别，支持主驾驶副驾驶分区控制，降低指令混淆，不过比较复杂地名识别有点惨不忍睹。</p></li>
 
-<h2 id="在git-repo层面修改git的name和email">在git repo层面修改git的name和email</h2>
+<li><p>音响中规中矩，没啥好说的，这车就不用追求这些了。</p></li>
 
-<pre><code class="language-bash">$ git config user.name &quot;Jerry&quot;
-$ git config user.email &quot;jerry@wjz.im&quot;
-</code></pre>
+<li><p>通过手机蓝牙开车门，启动车，可以不用带钥匙了。</p></li>
+</ol>
 
-<h2 id="仅在某次提交试用特定的name和email">仅在某次提交试用特定的name和email</h2>
+<h2 id="erx5缺点">ERX5缺点</h2>
 
-<pre><code class="language-bash">git commit --author=&quot;Jerry &lt;jerry@wjz.im&gt;&quot;
-</code></pre>
+<ol>
+<li>新车味道重，放了咖啡豆吸味，并常开窗透气，也要1个月后，才基本上把味道散干净。</li>
+<li>斑马在小城市中经常无法连接，影响导航速度。导航是先联网搜索，如果连不上，再使用本地，会卡一下，如果不知道，以为导航傻了。</li>
+<li>刹车位置比油门靠前，开久了累，而自动泊车反应比较慢，需要深踩油门。</li>
+<li><strong>前挡风玻璃外面很容易出水汽，看不清楚前路，必须用雨刮刮掉，即使空调出风口去掉上路依然会出冷风，这点在深圳很致命。</strong></li>
+<li>钥匙开启时灯亮的很突然，没有缓慢亮起，小细节的问题。</li>
+<li>钥匙在车里时，关驾驶门，车会响，本来是好事，但那声音也太大了，很吓人。</li>
+<li>斑马app没有充电时间次数和时间查询，不方便。</li>
+<li>行车记录仪tf兼容性堪忧，换了无数张，最后用了三星64g才解决。</li>
+<li>360度摄像头画质太差，人可能都看不清。</li>
+<li>除了主驾驶位窗户可以一键关闭，其它窗户都不可以，包括天窗，关上天窗的内窗需要一直按着，这个成本省的不应该啊！</li>
+<li>普通模式，车速100km/h以上可以明显感觉功率输出不太够了，操控没有80以下来的随心应手。</li>
+<li>刹车距离有点远，在速度60刹停需要提前一些。</li>
+<li>充电口挡板经常弹不出来，需要打开前盖拉线不方便。</li>
+<li>充电时间有点长，家庭充电，不确定功率，1小时大概20公里左右；不过私桩充电速度不错。</li>
+<li>速度超过100km/h，风噪较大，胎噪倒还好。</li>
+<li>中控钢琴漆简直是指纹收集器，还沾灰，不耐脏。</li>
+<li>后挡风玻璃变形严重，从后视镜看后车很不舒服。</li>
+<li>车玻璃都没有防紫外线，隔热等处理，不贴膜晒太阳特别热，当然，好处也有，就是散热也快。</li>
+<li>上陡坡不太行，需要狠踩电门，不然没力。</li>
+<li>虽然斑马比一般车互联网化功能多了那么一些，但主要在导航，音乐，有声读物，其它功能太少，远程功能就只能开车门，开空调，开空气净化，一点自动驾驶或者辅助驾驶功能都没有，甚至连其它app也不能安装，扩展性堪忧。</li>
+<li>行车记录仪不可以24小时拍摄，既然是电车，留个电给记录仪拍晚上停车场是挺有用的，很多老小区，停车场摄像头几乎没有，应该支持。</li>
+<li>输出功率在15%以下电机噪音有点大，听不习惯。</li>
+<li>充电口在车头，需要头插进车位才能充电，很别扭。</li>
+</ol>
 
-<h2 id="版本控制">版本控制</h2>
+<p><img src="https://blog.wjz.im/images/blog/2018-07/ERX5-2.jpg" alt="充电口在车头，需要头插进车位才能充电，很别扭" /></p>
 
-<table>
-<thead>
-<tr>
-<th>Version</th>
-<th>Action</th>
-<th>Time</th>
-</tr>
-</thead>
+<ol>
+<li><p>只支持直流快充和交流慢充，不支持交流快充，有点坑爹。试了一次交流快充，充电电流不到1A，充了2小时，还不到1度电&hellip;</p></li>
 
-<tbody>
-<tr>
-<td>1.0</td>
-<td>Init</td>
-<td>2018-09-28</td>
-</tr>
-</tbody>
-</table>
+<li><p>荣威的车小毛病不少，尤其是一些电子故障，如：经常会提示前车碰撞电子故障、并线检测电子故障等，总是提心吊胆的。</p></li>
+</ol>
+
+<p><strong>后续的文章补充能耗实测&hellip;</strong></p>
 
           </div>
 
@@ -411,10 +405,16 @@ $ git config user.email &quot;jerry@wjz.im&quot;
   <li class="pr-0"><a href="https://blog.wjz.im/tags/"><i class="fas fa-tags"></i></a></li>
   <div class="tags-sm">
     
-      <li><a href="https://blog.wjz.im/tags/git" role="button">git </a></li>
+      <li><a href="https://blog.wjz.im/tags/%E8%BD%A6" role="button">车 </a></li>
       
     
-      <li><a href="https://blog.wjz.im/tags/snippets" role="button">snippets </a></li>
+      <li><a href="https://blog.wjz.im/tags/%E8%8D%A3%E5%A8%81" role="button">荣威 </a></li>
+      
+    
+      <li><a href="https://blog.wjz.im/tags/erx5" role="button">ERX5 </a></li>
+      
+    
+      <li><a href="https://blog.wjz.im/tags/%E7%94%B5%E5%8A%A8%E8%BD%A6" role="button">电动车 </a></li>
       
     
   </div>
@@ -430,23 +430,9 @@ $ git config user.email &quot;jerry@wjz.im&quot;
           <div class="row pt-3">
             <div class="col-md-6">
               
-                <a href=https://blog.wjz.im/code/2018-09/ethereum/ class="post-meta">Previous
-                  <div class="pt-2 pb-5 d-flex">
-                    <i class="fas fa-angle-left text-grey font-weight-bold mr-2 active-color"></i>
-                    <span></span>
-                  </div>
-                </a>
-              
             </div>
             
             <div class="col-md-6 text-right" >
-              
-                <a href=https://blog.wjz.im/code/2018-09/git-stats/ class="post-meta">Next
-                  <div class="pt-2 pb-5 flex-reverse">
-                    <i class="fas fa-angle-right text-grey font-weight-bold ml-2 active-color"></i>
-                    <span>git_stats统计工具：统计小伙伴们的git代码提交</span>
-                  </div>
-                </a>
               
             </div>
           </div>
@@ -492,8 +478,8 @@ $ git config user.email &quot;jerry@wjz.im&quot;
 								
 
 										<li class="nav-item">
-						 					<a class="nav-link" href="#%e4%bf%ae%e6%94%b9%e6%89%80%e6%9c%89%e5%8e%86%e5%8f%b2commits%e7%9a%84name%e5%92%8cemail">
-												 修改所有历史commits的name和email
+						 					<a class="nav-link" href="#%e6%80%bb%e4%bd%93%e6%84%9f%e8%a7%89">
+												 总体感觉
 											</a>
 										</li>
 						 
@@ -514,8 +500,8 @@ $ git config user.email &quot;jerry@wjz.im&quot;
 								
 
 										<li class="nav-item">
-						 					<a class="nav-link" href="#%e5%85%a8%e5%b1%80%e4%bf%ae%e6%94%b9git%e7%9a%84name%e5%92%8cemail">
-												 全局修改git的name和email
+						 					<a class="nav-link" href="#erx5%e4%bc%98%e7%82%b9">
+												 ERX5优点
 											</a>
 										</li>
 						 
@@ -536,52 +522,8 @@ $ git config user.email &quot;jerry@wjz.im&quot;
 								
 
 										<li class="nav-item">
-						 					<a class="nav-link" href="#%e5%9c%a8git-repo%e5%b1%82%e9%9d%a2%e4%bf%ae%e6%94%b9git%e7%9a%84name%e5%92%8cemail">
-												 在git repo层面修改git的name和email
-											</a>
-										</li>
-						 
-								
-								
-									</ul>
-								
-							
-						
-				 
-						
-						
-							
-								
-								
-									<ul class="nav">
-								
-								
-
-										<li class="nav-item">
-						 					<a class="nav-link" href="#%e4%bb%85%e5%9c%a8%e6%9f%90%e6%ac%a1%e6%8f%90%e4%ba%a4%e8%af%95%e7%94%a8%e7%89%b9%e5%ae%9a%e7%9a%84name%e5%92%8cemail">
-												 仅在某次提交试用特定的name和email
-											</a>
-										</li>
-						 
-								
-								
-									</ul>
-								
-							
-						
-				 
-						
-						
-							
-								
-								
-									<ul class="nav">
-								
-								
-
-										<li class="nav-item">
-						 					<a class="nav-link" href="#%e7%89%88%e6%9c%ac%e6%8e%a7%e5%88%b6">
-												 版本控制
+						 					<a class="nav-link" href="#erx5%e7%bc%ba%e7%82%b9">
+												 ERX5缺点
 											</a>
 										</li>
 						 
