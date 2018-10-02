@@ -38,6 +38,11 @@
   </url>
   
   <url>
+    <loc>https://blog.wjz.im/blog/2018-05/%E8%AF%95%E9%A9%BE%E5%90%8E%E8%8D%A3%E5%A8%81erx5%E5%87%BA%E6%89%8B%E9%93%B6%E5%8F%B6%E9%87%91/</loc>
+    <lastmod>2018-05-19T23:03:12+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.wjz.im/moment/</loc>
     <lastmod>2015-08-19T20:29:37-07:00</lastmod>
   </url>
@@ -121,13 +126,13 @@
   </url>
   
   <url>
-    <loc>https://blog.wjz.im/tags/%E8%BD%A6/</loc>
+    <loc>https://blog.wjz.im/series/%E8%BD%A6/</loc>
     <lastmod>2018-07-03T23:03:12+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://blog.wjz.im/series/%E8%BD%A6/</loc>
+    <loc>https://blog.wjz.im/tags/%E8%BD%A6/</loc>
     <lastmod>2018-07-03T23:03:12+08:00</lastmod>
     <priority>0</priority>
   </url>
