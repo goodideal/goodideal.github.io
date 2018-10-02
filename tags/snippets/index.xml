@@ -6,10 +6,19 @@
     <description>Recent content in Snippets on WJZhu&#39;s Trash Bin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zn-Hans</language>
-    <lastBuildDate>Fri, 28 Sep 2018 11:41:42 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 02 Oct 2018 14:05:44 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.wjz.im/tags/snippets/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Markdown语法，如何插入连续的数字列表</title>
+      <link>https://blog.wjz.im/code/2018-09/markdown-continue-number-list/</link>
+      <pubDate>Tue, 02 Oct 2018 14:05:44 +0800</pubDate>
+      
+      <guid>https://blog.wjz.im/code/2018-09/markdown-continue-number-list/</guid>
+      <description>前言 在markdown中插入数字列表方法方法很简单，只需要输入如： 1. 我是第一行 2. 我是第二行 显示效果为： 我是第一行 我是第二行 但如果在行中间增加图片或者代码块之后，下面的数字编号就不再连续了，如： 1. 我是第一行 2. 我是第二行 &amp;quot;我是代码块&amp;quot; 3. 我是第三行 显示效果为： 我是第一行 我是第二行 我是代码块 我是第三行 方法 方法很简单，只需要为代码块增加4个空格（2个tab）的缩进，即可让数字编号再度连续</description>
+    </item>
     
     <item>
       <title>git_stats统计工具：统计小伙伴们的git代码提交</title>
